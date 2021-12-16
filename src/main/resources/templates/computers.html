@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+<body>
+    <header>
+      <th:block th:include="~{/fragments/header}"></th:block>
+  
+      </header>
+<h1 align="center">COMPUTERS</h1>
+    <div class="card w-50 mx-auto" th:each="c : ${computers}" th:object="${c}">
+        <div  class="card-body">
+            <img th:src="*{picture}" alt="" class="card-img-top">
+            <h5 class="card-title" th:text="*{name}">Card title</h5>
+            <p class="card-text" th:text="*{description}">With supporting text below as a natural lead-in to additional content.</p>
+            <h6 class="card-title" th:text="*{price}">Card title</h6>
+            <a th:href="@{/products/buy/{id}(id = *{id})}" class="btn btn-primary">Buy</a>
+        </div>
+    </div>
+
+
+
+
+
+<footer>
+  <th:block th:include="~{/fragments/footer}"></th:block>
+</footer>
+</body>
+</html>

@@ -34,7 +34,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Contact us</a>
+                        <a class="nav-link active" aria-current="page" href="/question">Contact us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/article/blog">Blog</a>
@@ -44,14 +44,14 @@
                             Products
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Computers</a></li>
-                            <li><a class="dropdown-item" href="#">Laptops</a></li>
-                            <li><a class="dropdown-item" href="#">Monitors</a></li>
-                            <li><a class="dropdown-item" href="#">Phones</a></li>
-                            <li><a class="dropdown-item" href="#">Tablets</a></li>
+                            <li><a class="dropdown-item" href="/products/computers">Computers</a></li>
+                            <li><a class="dropdown-item" href="/products/laptops">Laptops</a></li>
+                            <li><a class="dropdown-item" href="/products/monitors">Monitors</a></li>
+                            <li><a class="dropdown-item" href="/products/phones">Phones</a></li>
+                            <li><a class="dropdown-item" href="/products/tablets">Tablets</a></li>
 
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+<!--                            <li><hr class="dropdown-divider"></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -59,26 +59,26 @@
                     </li>
                     <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Admin
+                            Admin menu
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/question/admin">Questions</a></li>
                             <li><a class="dropdown-item" href="/article/add">Add article</a></li>
                             <li><a class="dropdown-item" href="/products/add">Add product</a></li>
-                            <li><a class="dropdown-item" href="#">Phones</a></li>
-                            <li><a class="dropdown-item" href="#">Tablets</a></li>
+<!--                            <li><a class="dropdown-item" href="#">Phones</a></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Tablets</a></li>-->
 
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+<!--                            <li><hr class="dropdown-divider"></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
                         </ul>
                     </li>
                 </ul>
 
 
 
-                <div sec:authorize="hasRole('ADMIN')">
-                    <a class="navbar-brand" href="/question/admin">Question</a>
-                </div>
+<!--                <div sec:authorize="hasRole('ADMIN')">-->
+<!--                    <a class="navbar-brand" href="/question/admin">Question</a>-->
+<!--                </div>-->
 
 
 

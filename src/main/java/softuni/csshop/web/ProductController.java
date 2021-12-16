@@ -3,10 +3,8 @@ package softuni.csshop.web;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import softuni.csshop.model.binding.ProductAddBindingModel;
 import softuni.csshop.service.ProductService;
 
@@ -43,6 +41,53 @@ public class ProductController {
 
 
         return "redirect:/home";
+    }
+
+    @GetMapping("/buy/{id}")
+    public String delete(@PathVariable("id")String id){
+        this.productService.delete(id);
+        return "redirect:/products/buy";
+    }
+
+    @GetMapping("/buy")
+    public String buy(){
+        return "buy";
+    }
+
+
+
+    @GetMapping("/laptops")
+    public ModelAndView laptopsView(ModelAndView modelAndView){
+        modelAndView.addObject("laptops", this.productService.findAllLaptops());
+        modelAndView.setViewName("laptops");
+        return modelAndView;
+    }
+
+    @GetMapping("/computers")
+    public ModelAndView computersView(ModelAndView modelAndView){
+        modelAndView.addObject("computers", this.productService.findAllComputers());
+        modelAndView.setViewName("computers");
+        return modelAndView;
+    }
+
+    @GetMapping("/monitors")
+    public ModelAndView monitorsView(ModelAndView modelAndView){
+        modelAndView.addObject("monitors", this.productService.findAllMonitors());
+        modelAndView.setViewName("monitors");
+        return modelAndView;
+    }
+
+    @GetMapping("/phones")
+    public ModelAndView phonesView(ModelAndView modelAndView){
+        modelAndView.addObject("phones", this.productService.findAllPhones());
+        modelAndView.setViewName("phones");
+        return modelAndView;
+    }
+    @GetMapping("/tablets")
+    public ModelAndView tabletsView(ModelAndView modelAndView){
+        modelAndView.addObject("tablets", this.productService.findAllTablets());
+        modelAndView.setViewName("tablets");
+        return modelAndView;
     }
 
 
