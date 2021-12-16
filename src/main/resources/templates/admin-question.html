@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+<body>
+    <header>
+      <th:block th:include="~{/fragments/header}"></th:block>
+  
+      </header>
+
+    <div class="card w-50 mx-auto" th:each="q : ${questions}" th:object="${q}">
+        <div  class="card-body">
+            <h5 class="card-title" th:text="*{email}">Card title</h5>
+            <p class="card-text" th:text="*{textContent}">With supporting text below as a natural lead-in to additional content.</p>
+            <a th:href="@{/question/delete/{id}(id = *{id})}" class="btn btn-primary">Delete</a>
+        </div>
+    </div>
+
+
+
+<footer>
+  <th:block th:include="~{/fragments/footer}"></th:block>
+</footer>
+</body>
+</html>

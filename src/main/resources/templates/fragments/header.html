@@ -1,0 +1,104 @@
+<th:block xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <section class="info-section">
+        <article class="logo"><img src="/pic/Logo_Cut.jpg" alt="Logo" /></article>
+        <h1>Creazy Shop Shop</h1>
+        <article class="info">
+            <article class="info-more">
+                <p class="info-more-text">Call Creazy Shop</p>
+                <p>(02) 981-36-01</p>
+            </article>
+            <article class="info-more">
+                <p class="info-more-text">Email Creazy Shop</p>
+                <p>shop@css.bg</p>
+            </article>
+            <article class="info-more">
+                <p class="info-more-text">Find Creazy Shop</p>
+                <p>Sofia City 1000</p>
+            </article>
+            <form method="get"  action="/question">
+                <button type="submit" class="btn btn-warning">Have a question</button>
+            </form>
+
+
+        </article>
+
+    </section>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-sm">
+            <a class="navbar-brand" href="/home">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Contact us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/article/blog">Blog</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Computers</a></li>
+                            <li><a class="dropdown-item" href="#">Laptops</a></li>
+                            <li><a class="dropdown-item" href="#">Monitors</a></li>
+                            <li><a class="dropdown-item" href="#">Phones</a></li>
+                            <li><a class="dropdown-item" href="#">Tablets</a></li>
+
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><p class="text-white bg-dark"> Hello <span th:text="${#authentication.getName()}" ></span>!</p></a>
+                    </li>
+                    <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/question/admin">Questions</a></li>
+                            <li><a class="dropdown-item" href="/article/add">Add article</a></li>
+                            <li><a class="dropdown-item" href="/products/add">Add product</a></li>
+                            <li><a class="dropdown-item" href="#">Phones</a></li>
+                            <li><a class="dropdown-item" href="#">Tablets</a></li>
+
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+
+                <div sec:authorize="hasRole('ADMIN')">
+                    <a class="navbar-brand" href="/question/admin">Question</a>
+                </div>
+
+
+
+
+
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button type="button" class="btn btn-outline-warning">Search</button>
+                </form>
+
+
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-link">Logout</button>
+
+                </form>
+
+
+            </div>
+        </div>
+
+    </nav>
+
+</th:block>

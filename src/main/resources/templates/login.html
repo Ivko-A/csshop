@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <th:block th:include="~{/fragments/head-lr}"></th:block>
+    </head>
+<body>
+    
+
+    <div class="page-centered">
+        <div class="logo">
+            <p><article class="login-pic"></article><img th:src="@{/pic/login.jpg}" alt="Login pic" /></article></p>
+        </div>
+        <h1 class="login-h1">Welcome to Creazy Shop Shop</h1>
+        <h2 class="login-h2">Login to your Account</h2>
+        <form th:action="@{/login/authenticate}" method="post">
+
+            <div class="form-group">
+                <input name="username" type="email" th:value="${username}" placeholder="Email" id="userEmail" required class="form-control form-input">
+            </div>
+            <div class="form-group">
+                <input name="password" type="password" placeholder="Password" id="userPassword" required class="form-control form-input">
+            </div>
+            <input type="submit" class="form-submit" value="Log In">
+
+            If you don't have an account, then  <a href="/registration">register one.</a>
+            <div th:if="${error}" class="alert alert-danger" role="alert" align="center">
+                Wrong email or password.
+            </div>
+
+        </form>
+    </div>
+    
+</body>
+</html>

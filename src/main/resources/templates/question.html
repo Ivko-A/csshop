@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+<body>
+    <header>
+      <th:block th:include="~{/fragments/header}"></th:block>
+  
+      </header>
+
+    <div class="container" align="center">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="well well-sm">
+                    <form class="form-horizontal" th:action="@{/question/save}" method="post">
+                        <fieldset>
+                            <legend class="text-center">Ask us</legend>
+
+
+
+                            <!-- Email input-->
+
+<!--                            <div class="form-group">-->
+<!--                                <label class="col-md-3 control-label" for="email">Your E-mail</label>-->
+<!--                                <div class="col-md-9">-->
+<!--                                    <input id="email" name="email" type="text" placeholder="Your email" class="form-control">-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Your E-mail:</label>
+                                <div class="col-md-9">
+                                    <span th:text="${#authentication.getName()}" ></span>
+                                </div>
+                            </div>
+
+                            <!-- Message body -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="message">Your question</label>
+                                <div class="col-md-9">
+                                    <textarea class="form-control" id="message" name="textContent" placeholder="Please enter your question here..." rows="5"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Form actions -->
+                            <div class="form-group">
+                                <div class="col-md-12 text-right">
+                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<footer>
+  <th:block th:include="~{/fragments/footer}"></th:block>
+</footer>
+</body>
+</html>

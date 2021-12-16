@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:include="~{/fragments/head}"></th:block>
+    <link th:href="@{//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css}" rel="stylesheet" id="bootstrap-css">
+<!--    <script th:src="@{//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js}"></script>-->
+    <script th:src="@{//code.jquery.com/jquery-1.11.1.min.js}"></script>
+</head>
+<body>
+    <header>
+      <th:block th:include="~{/fragments/header}"></th:block>
+  
+      </header>
+
+    <form th:action="@{/products/add}" method="post" class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>ADD PRODUCT</legend>
+
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="name">PRODUCT NAME</label>
+                <div class="col-md-4">
+                    <input id="name" name="name" placeholder="NAME" class="form-control input-md" required="" type="text">
+
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="category">PRODUCT CATEGORY</label>
+                <div class="col-md-4">
+                    <select id="category" name="category" class="form-control">
+                        <option value="">SELECT CATEGORY</option>
+<
+                        <option th:each="p : ${T(softuni.csshop.model.Category).values()}"
+                                th:text="${p}" th:value="${p}">PHONES</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="description">PRODUCT DESCRIPTION</label>
+                <div class="col-md-4">
+                    <textarea class="form-control" id="description" name="description"></textarea>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="quantity">AVAILABLE QUANTITY</label>
+                <div class="col-md-4">
+                    <input id="quantity" name="quantity" placeholder="AVAILABLE QUANTITY" class="form-control input-md" required="" type="text">
+
+                </div>
+            </div>
+
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="price">PRICE</label>
+                <div class="col-md-4">
+                    <input id="price" name="price" placeholder="PRICE" class="form-control input-md" required="" type="text">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="picture">PICTURE URL</label>
+                <div class="col-md-4">
+                    <input id="picture" name="picture" placeholder="PICTURE URL" class="form-control input-md" required="" type="text">
+
+                </div>
+            </div>
+
+
+
+                    <!-- Button -->
+                    <div class="form-group">
+
+                        <div class="col-md-4">
+                            <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-primary">ADD</button>
+                        </div>
+                    </div>
+
+        </fieldset>
+    </form>
+
+
+
+<footer>
+  <th:block th:include="~{/fragments/footer}"></th:block>
+</footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+<body>
+    <header>
+      <th:block th:include="~{/fragments/header}"></th:block>
+  
+      </header>
+    <section id="gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-8">
+                    <div class="card" th:each="a : ${articles}" th:object="${a}">
+                        <img th:src="*{picture}" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="*{name}">Sunset</h5>
+                            <p class="card-text" th:text="*{textContent}">Lorem </p>
+                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/article/delete/{id}(id = *{id})}" class="btn btn-outline-success btn-sm">Delete</a>
+                            <!--                            <a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>-->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+<footer>
+  <th:block th:include="~{/fragments/footer}"></th:block>
+</footer>
+</body>
+</html>
