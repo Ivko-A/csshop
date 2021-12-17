@@ -109,7 +109,20 @@ public class UserServiceImpl implements UserService {
 
         RoleEntity adminRole = new RoleEntity().setRole("ROLE_ADMIN");
 
-        UserEntity userEntity = this.userEntityRepository.getById(id);
+        Optional<UserEntity> optional = this.userEntityRepository.findById(id);
+
+        if (optional.isPresent()) {
+            UserEntity userEntity = optional.get();
+            userEntity.getRoles().add(adminRole);
+            this.userEntityRepository.save(userEntity);
+
+        }
+
+
+
+
+
+
 
 //        List<RoleEntity> current = userEntity.getRoles();
 //        current.add(adminRole);

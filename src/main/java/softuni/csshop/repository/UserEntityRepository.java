@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface UserEntityRepository extends JpaRepository<UserEntity, String> {
     Optional<UserEntity> findByEmail(String email);
+    UserEntity getOne(String id);
 }
