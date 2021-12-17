@@ -1,5 +1,6 @@
 package softuni.csshop.service.impl;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -9,11 +10,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import softuni.csshop.model.RoleEntity;
 import softuni.csshop.model.UserEntity;
+import softuni.csshop.model.view.UserViewModel;
 import softuni.csshop.repository.UserEntityRepository;
 import softuni.csshop.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -21,11 +24,13 @@ public class UserServiceImpl implements UserService {
     private final UserEntityRepository userEntityRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserDetailsService userDetailsService;
+    private final ModelMapper modelMapper;
 
-    public UserServiceImpl(UserEntityRepository userEntityRepository, PasswordEncoder passwordEncoder, UserDetailsService userDetailsService) {
+    public UserServiceImpl(UserEntityRepository userEntityRepository, PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, ModelMapper modelMapper) {
         this.userEntityRepository = userEntityRepository;
         this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService;
+        this.modelMapper = modelMapper;
     }
 
 
@@ -65,4 +70,56 @@ public class UserServiceImpl implements UserService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
     }
+
+    @Override
+    public List<UserViewModel> findAllUsers() {
+        return this.userEntityRepository
+                .findAll()
+                .stream()
+                .map(userEntity -> {
+
+                    return this.modelMapper
+                            .map(userEntity, UserViewModel.class);
+                })
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public UserViewModel findById(String id) {
+
+        return this.userEntityRepository
+                .findById(id)
+                .map(userEntity -> {
+                    UserViewModel userViewModel = this.modelMapper
+                            .map(userEntity, UserViewModel.class);
+
+                    return userViewModel;
+                })
+                .orElse(null);
+    }
+
+    @Override
+    public void delete(String id) {
+        this.userEntityRepository.deleteById(id);
+
+    }
+
+    @Override
+    public void makeAdmin(String id) {
+
+        RoleEntity adminRole = new RoleEntity().setRole("ROLE_ADMIN");
+
+        UserEntity userEntity = this.userEntityRepository.getById(id);
+
+//        List<RoleEntity> current = userEntity.getRoles();
+//        current.add(adminRole);
+//        userEntity.setRoles(current);
+//        this.userEntityRepository.save(userEntity);
+
+
+//        userEntity.getRoles().add(new RoleEntity().setRole("ROLE_ADMIN"));
+//        this.userEntityRepository.save(userEntity);
+    }
+
+
 }

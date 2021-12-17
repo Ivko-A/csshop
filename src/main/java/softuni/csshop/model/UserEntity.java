@@ -35,7 +35,7 @@ public class UserEntity extends BaseEntity{
         this.password = password;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch= FetchType.EAGER)
+    @OneToMany(fetch= FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id")
     public List<RoleEntity> getRoles() {
         return roles;
