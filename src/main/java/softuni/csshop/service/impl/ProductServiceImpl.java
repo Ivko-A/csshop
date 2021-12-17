@@ -30,74 +30,22 @@ public class ProductServiceImpl implements ProductService {
         this.productRepository.save(product);
     }
 
-    @Override
-    public List<ProductViewModel> findAllLaptops() {
 
-        return this.productRepository
-                .findAll()
-                .stream()
-                .filter(product -> product.getCategory().name().equals("LAPTOPS"))
-                .map(product -> {
-                    System.out.println();
-                    return this.modelMapper
-                            .map(product, ProductViewModel.class);
-                })
-                .collect(Collectors.toList());
-    }
 
     @Override
     public void delete(String id) {
         this.productRepository.deleteById(id);
     }
 
-    @Override
-    public List<ProductViewModel> findAllComputers() {
-        return this.productRepository
-                     .findAll()
-                .stream()
-                .filter(product -> product.getCategory().name().equals("COMPUTERS"))
-                .map(product -> {
-                    System.out.println();
-                    return this.modelMapper
-                            .map(product, ProductViewModel.class);
-                })
-                .collect(Collectors.toList());
-    }
+
 
     @Override
-    public List<ProductViewModel> findAllMonitors() {
+    public List<ProductViewModel> findAllFromCategory(String category) {
+
         return this.productRepository
                 .findAll()
                 .stream()
-                .filter(product -> product.getCategory().name().equals("MONITORS"))
-                .map(product -> {
-                    System.out.println();
-                    return this.modelMapper
-                            .map(product, ProductViewModel.class);
-                })
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<ProductViewModel> findAllPhones() {
-        return this.productRepository
-                .findAll()
-                .stream()
-                .filter(product -> product.getCategory().name().equals("PHONES"))
-                .map(product -> {
-                    System.out.println();
-                    return this.modelMapper
-                            .map(product, ProductViewModel.class);
-                })
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<ProductViewModel> findAllTablets() {
-        return this.productRepository
-                .findAll()
-                .stream()
-                .filter(product -> product.getCategory().name().equals("TABLETS"))
+                .filter(product -> product.getCategory().name().equals(category))
                 .map(product -> {
                     System.out.println();
                     return this.modelMapper

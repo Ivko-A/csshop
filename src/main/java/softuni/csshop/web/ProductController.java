@@ -58,34 +58,34 @@ public class ProductController {
 
     @GetMapping("/laptops")
     public ModelAndView laptopsView(ModelAndView modelAndView){
-        modelAndView.addObject("laptops", this.productService.findAllLaptops());
+        modelAndView.addObject("laptops", this.productService.findAllFromCategory("LAPTOPS"));
         modelAndView.setViewName("laptops");
         return modelAndView;
     }
 
     @GetMapping("/computers")
     public ModelAndView computersView(ModelAndView modelAndView){
-        modelAndView.addObject("computers", this.productService.findAllComputers());
+        modelAndView.addObject("computers", this.productService.findAllFromCategory("COMPUTERS"));
         modelAndView.setViewName("computers");
         return modelAndView;
     }
 
     @GetMapping("/monitors")
     public ModelAndView monitorsView(ModelAndView modelAndView){
-        modelAndView.addObject("monitors", this.productService.findAllMonitors());
+        modelAndView.addObject("monitors", this.productService.findAllFromCategory("MONITORS"));
         modelAndView.setViewName("monitors");
         return modelAndView;
     }
 
     @GetMapping("/phones")
     public ModelAndView phonesView(ModelAndView modelAndView){
-        modelAndView.addObject("phones", this.productService.findAllPhones());
+        modelAndView.addObject("phones", this.productService.findAllFromCategory("PHONES"));
         modelAndView.setViewName("phones");
         return modelAndView;
     }
     @GetMapping("/tablets")
     public ModelAndView tabletsView(ModelAndView modelAndView){
-        modelAndView.addObject("tablets", this.productService.findAllTablets());
+        modelAndView.addObject("tablets", this.productService.findAllFromCategory("TABLETS"));
         modelAndView.setViewName("tablets");
         return modelAndView;
     }

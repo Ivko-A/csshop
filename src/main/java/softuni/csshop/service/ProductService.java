@@ -8,15 +8,7 @@ import java.util.List;
 public interface ProductService {
     void addArticle(ProductAddBindingModel productAddBindingModel);
 
-    List<ProductViewModel> findAllLaptops();
-
     void delete(String id);
 
-    List<ProductViewModel> findAllComputers();
-
-    List<ProductViewModel> findAllMonitors();
-
-    List<ProductViewModel> findAllPhones();
-
-    List<ProductViewModel> findAllTablets();
+    List<ProductViewModel> findAllFromCategory(String category);
 }
