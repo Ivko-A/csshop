@@ -121,5 +121,18 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public void removeAdmin(String id) {
+        RoleEntity userRole = new RoleEntity().setRole("ROLE_USER");
+
+        UserEntity userEntity = this.userEntityRepository.findById(id).get();
+
+        userEntity.getRoles().clear();
+        userEntity.getRoles().add(userRole);
+        this.userEntityRepository.save(userEntity);
+
+
+    }
+
 
 }

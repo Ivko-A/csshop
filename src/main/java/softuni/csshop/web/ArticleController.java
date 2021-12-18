@@ -51,6 +51,7 @@ public class ArticleController {
         return "redirect:/home";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id")String id){
         this.articleService.delete(id);

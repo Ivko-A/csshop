@@ -22,4 +22,6 @@ public interface UserService {
     void delete(String id);
 
     void makeAdmin(String id);
+
+    void removeAdmin(String id);
 }

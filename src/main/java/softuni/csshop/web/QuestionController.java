@@ -60,6 +60,7 @@ public class QuestionController {
         return modelAndView;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id")String id){
         this.questionService.delete(id);

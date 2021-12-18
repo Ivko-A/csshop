@@ -1,5 +1,6 @@
 package softuni.csshop.web;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import softuni.csshop.service.UserService;
 
 @Controller
 @RequestMapping("/users")
+@PreAuthorize("hasRole('ADMIN')")
 public class UserController {
 
     private final UserService userService;
@@ -41,6 +43,12 @@ public class UserController {
     @GetMapping("/makeAdmin/{id}")
     public String makeAdmin(@PathVariable("id")String id){
         this.userService.makeAdmin(id);
+        return "redirect:/users";
+    }
+
+    @GetMapping("/removeAdmin/{id}")
+    public String removeAdmin(@PathVariable("id")String id){
+        this.userService.removeAdmin(id);
         return "redirect:/users";
     }
 }
