@@ -13,4 +13,6 @@ public interface ProductService {
     List<ProductViewModel> findAllFromCategory(String category);
 
     void buy(String id);
+
+    void deleteNonActiveProducts();
 }

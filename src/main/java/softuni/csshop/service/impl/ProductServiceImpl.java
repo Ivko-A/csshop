@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
                 .filter(product -> product.getCategory().name().equals(category))
                 .filter(product -> product.isActive())
                 .map(product -> {
-                    System.out.println();
+
                     return this.modelMapper
                             .map(product, ProductViewModel.class);
                 })
@@ -59,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
     public void buy(String id) {
         Product product = this.productRepository.findById(id).get();
 
-        System.out.println();
+
 
         product.setQuantity(product.getQuantity() - 1);
 
@@ -68,5 +68,17 @@ public class ProductServiceImpl implements ProductService {
         }
 
         this.productRepository.save(product);
+    }
+
+    @Override
+    public void deleteNonActiveProducts() {
+        this.productRepository
+             .findAll()
+                .stream()
+                .forEach(product -> {
+                    if (!product.isActive()) {
+                        this.productRepository.delete(product);
+                    }
+                });
     }
 }

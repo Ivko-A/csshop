@@ -6,4 +6,5 @@ import softuni.csshop.model.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, String> {
+
 }
