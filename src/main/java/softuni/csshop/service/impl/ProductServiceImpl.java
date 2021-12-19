@@ -46,11 +46,27 @@ public class ProductServiceImpl implements ProductService {
                 .findAll()
                 .stream()
                 .filter(product -> product.getCategory().name().equals(category))
+                .filter(product -> product.isActive())
                 .map(product -> {
                     System.out.println();
                     return this.modelMapper
                             .map(product, ProductViewModel.class);
                 })
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void buy(String id) {
+        Product product = this.productRepository.findById(id).get();
+
+        System.out.println();
+
+        product.setQuantity(product.getQuantity() - 1);
+
+        if (product.getQuantity() == 0) {
+            product.setActive(false);
+        }
+
+        this.productRepository.save(product);
     }
 }
