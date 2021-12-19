@@ -9,8 +9,8 @@
   
       </header>
 
-    <div class="card w-50 mx-auto" th:each="q : ${questions}" th:object="${q}">
-        <div  class="card-body">
+    <div class="card w-50 mx-auto" >
+        <div  class="card-body" th:each="q : ${questions}" th:object="${q}">
             <h5 class="card-title" th:text="*{email}">Card title</h5>
             <p class="card-text" th:text="*{textContent}">With supporting text below as a natural lead-in to additional content.</p>
             <a th:href="@{/question/delete/{id}(id = *{id})}" class="btn btn-primary">Delete</a>

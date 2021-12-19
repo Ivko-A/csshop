@@ -10,8 +10,8 @@
   
       </header>
 <h1 align="center">TABLETS</h1>
-    <div class="card w-50 mx-auto" th:each="t : ${tablets}" th:object="${t}">
-        <div  class="card-body">
+    <div class="card w-50 mx-auto" >
+        <div  class="card-body" th:each="t : ${tablets}" th:object="${t}">
             <img th:src="*{picture}" alt="" class="card-img-top">
             <h5 class="card-title" th:text="*{name}">Card title</h5>
             <p class="card-text" th:text="*{description}">With supporting text below as a natural lead-in to additional content.</p>
