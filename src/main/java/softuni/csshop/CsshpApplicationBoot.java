@@ -32,8 +32,6 @@ public class CsshpApplicationBoot implements CommandLineRunner {
     private void createUsers() {
 
 
-
-
         if (userEntityRepository.count() == 0) {
         // user - admin
         UserEntity adminUser = new UserEntity();

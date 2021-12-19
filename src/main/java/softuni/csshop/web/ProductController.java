@@ -33,7 +33,7 @@ public class ProductController {
 
 
         if (bindingResult.hasErrors()) {
-            return "/products/add";
+            return "redirect:add";
         }
 
 

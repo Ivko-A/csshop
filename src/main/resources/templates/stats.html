@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+<body>
+    <header>
+      <th:block th:include="~{/fragments/header}"></th:block>
+  
+      </header>
+<h1 align="center">Requests and session started</h1>
+
+
+    <p align="center">Request count: <span th:text="${requestCount}">4</span></p>
+    <p align="center">Started on: <span th:text="${#temporals.format(startedOn, 'dd/MMM/yyyy HH:mm')}">----</span> </p>
+
+
+
+
+<footer>
+  <th:block th:include="~{/fragments/footer}"></th:block>
+</footer>
+</body>
+</html>
