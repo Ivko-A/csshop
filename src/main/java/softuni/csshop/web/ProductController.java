@@ -2,6 +2,7 @@ package softuni.csshop.web;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,7 +23,8 @@ public class ProductController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/add")
-    public String addProduct() {
+    public String addProduct(Model model) {
+        model.addAttribute("productAddBindingModel", new ProductAddBindingModel());
         return "product-add";
     }
 
@@ -33,7 +35,7 @@ public class ProductController {
 
 
         if (bindingResult.hasErrors()) {
-            return "redirect:add";
+            return "product-add";
         }
 
 

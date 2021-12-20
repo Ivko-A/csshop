@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Length;
 import softuni.csshop.model.Category;
 
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
@@ -62,7 +63,8 @@ public class ProductAddBindingModel {
         this.quantity = quantity;
     }
 
-    @NotNull
+    @NotNull(message = "Product must have a picture")
+    @NotBlank(message = "Product must have a picture")
     public String getPicture() {
         return picture;
     }
