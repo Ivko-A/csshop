@@ -48,17 +48,17 @@ public class CsshpApplicationBoot implements CommandLineRunner {
 
         userEntityRepository.save(adminUser);
 
-//        // normal user - admin
-//        UserEntity normalUser = new UserEntity();
-//        normalUser.setEmail("ivan@abv.bg");
-//        normalUser.setPassword(new BCryptPasswordEncoder().encode("123"));
-//
-//        RoleEntity roleUserNormalUser = new RoleEntity();
-//        roleUserNormalUser.setRole("ROLE_USER");
-//
-//        normalUser.setRoles(List.of(roleUserNormalUser));
-//
-//        userEntityRepository.save(normalUser);
+//        // normal user
+        UserEntity normalUser = new UserEntity();
+        normalUser.setEmail("ivan@abv.bg");
+        normalUser.setPassword(new BCryptPasswordEncoder().encode("123"));
+
+        RoleEntity roleUserNormalUser = new RoleEntity();
+        roleUserNormalUser.setRole("ROLE_USER");
+
+        normalUser.setRoles(List.of(roleUserNormalUser));
+
+        userEntityRepository.save(normalUser);
       }
 
 

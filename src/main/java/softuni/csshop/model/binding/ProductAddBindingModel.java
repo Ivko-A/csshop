@@ -37,7 +37,7 @@ public class ProductAddBindingModel {
         this.category = category;
     }
 
-    @Length(min = 4, max = 50, message = "Description must be between 5 and 50 characters")
+    @Length(min = 4, max = 200, message = "Description must be between 5 and 200 characters")
     public String getDescription() {
         return description;
     }
