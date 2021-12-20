@@ -14,21 +14,25 @@
 
         <form th:action="@{/registration}" method="post" th:object="${formData}">
 
-            <div class="form-group">
-                <input name="email" type="email" th:value="*{email}" placeholder="Email" id="email" required class="form-control form-input">
+            <div class="form-group" >
+                <input name="email" type="email" th:value="*{email}" th:errorclass="is-invalid" placeholder="Email" id="email" required class="form-control form-input">
             </div>
+            <small th:each="e : ${#fields.errors('email')}" th:text="${e}" class="text-danger">Incorrect email!</small>
+
             <div class="invalid-feedback">
                 The email should be provided and valid and should not exist in the system.
             </div>
             <div class="form-group">
                 <input name="password" type="password" placeholder="Password" id="password" required class="form-control form-input">
             </div>
+            <small th:each="e : ${#fields.errors('password')}" th:text="${e}" class="text-danger">Incorrect pasword!</small>
             <div class="invalid-feedback">
                 Password should be provided and should match the confirmed password.
             </div>
             <div class="form-group">
                 <input name="confirmPassword" type="password" placeholder="Confirm Password" id="confirmPassword" required class="form-control form-input">
             </div>
+
             <div class="invalid-feedback">
                 Password should be provided and should match the confirmed password.
             </div>

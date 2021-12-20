@@ -12,7 +12,7 @@ public class UserRegistrationBindingModel {
     public UserRegistrationBindingModel() {
     }
 
-    @Email
+    @Email(message = "Please enter a valid email address")
     public String getEmail() {
         return email;
     }
@@ -21,7 +21,7 @@ public class UserRegistrationBindingModel {
         this.email = email;
     }
 
-    @Length(min = 2)
+    @Length(min = 2, max = 10, message = "Password must between 3 and 10 characters")
     public String getPassword() {
         return password;
     }

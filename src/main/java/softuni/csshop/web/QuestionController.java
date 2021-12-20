@@ -5,6 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,7 +27,8 @@ public class QuestionController {
     }
 
     @GetMapping()
-    public String question(){
+    public String question(Model model){
+        model.addAttribute("questionAddBindingModel", new QuestionAddBindingModel());
         return "question";
     }
 
@@ -36,7 +38,7 @@ public class QuestionController {
 
 
         if (bindingResult.hasErrors()) {
-            return "question/save";
+            return "question";
         }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

@@ -19,7 +19,7 @@ public class QuestionAddBindingModel {
         this.email = email;
     }
 
-    @Length(min = 9, message = "Question must at least 10 characters")
+    @Length(min = 9, message = "Question must be at least 10 character")
     public String getTextContent() {
         return textContent;
     }

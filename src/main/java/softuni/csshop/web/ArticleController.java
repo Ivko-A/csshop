@@ -2,6 +2,7 @@ package softuni.csshop.web;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,7 +32,8 @@ public class ArticleController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/add")
-    public String addArticle(){
+    public String addArticle(Model model){
+        model.addAttribute("articleAddBindingModel", new ArticleAddBindingModel());
         return "article-add";
     }
 
@@ -42,7 +44,7 @@ public class ArticleController {
 
 
         if (bindingResult.hasErrors()) {
-            return "article/add";
+            return "article-add";
         }
 
         this.articleService.addArticle(articleAddBindingModel);
