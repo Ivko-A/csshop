@@ -11,8 +11,7 @@ public class UserEntity extends BaseEntity{
     private String email;
     private String password;
     private List<RoleEntity> roles = new ArrayList<>();
-//    private List<Product> cart = new ArrayList<>();
-//    private List<Product> orders = new ArrayList<>();
+
 
     public UserEntity() {
     }
@@ -45,24 +44,4 @@ public class UserEntity extends BaseEntity{
         this.roles = roles;
     }
 
-//    @OneToMany(mappedBy = "products", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @OneToMany(cascade = CascadeType.ALL, fetch= FetchType.EAGER)
-//    @JoinColumn(name = "product_id")
-//    public List<Product> getCart() {
-//        return cart;
-//    }
-//
-//    public void setCart(List<Product> cart) {
-//        this.cart = cart;
-//    }
-//
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch= FetchType.EAGER)
-//    @JoinColumn(name = "products_id")
-//    public List<Product> getOrders() {
-//        return orders;
-//    }
-//
-//    public void setOrders(List<Product> orders) {
-//        this.orders = orders;
-//    }
 }
